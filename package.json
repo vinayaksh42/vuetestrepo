@@ -1,0 +1,19 @@
+{
+  "name": "vuetestrepo",
+  "version": "1.0.0",
+  "description": "Vue test repo for EOS_ICONS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinayaksh42/vuetestrepo.git"
+  },
+  "author": "Vinayak Sharma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinayaksh42/vuetestrepo/issues"
+  },
+  "homepage": "https://github.com/vinayaksh42/vuetestrepo#readme"
+}
