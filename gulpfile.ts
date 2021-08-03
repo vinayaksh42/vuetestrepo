@@ -5,7 +5,7 @@ import { copy } from './utils/copy'
 export default series(
 
   // Cleaning 'src','svg','es','lib' before copying SVGs from 'EOS-Icons'
-  clean(['src', 'svg', 'es', 'lib']),
+  clean(['dist', 'svg', 'src/lib-components']),
 
   // Running all the tasks of copying SVGs from 'EOS-Icons' in parallel
   parallel(
@@ -33,21 +33,6 @@ export default series(
     copy({
       from: ['node_modules/eos-icons/svg-outlined/material/*.svg'],
       toDir: 'svg/outlined'
-    }),
-
-    copy({
-      from: ['template/index.ts'],
-      toDir: 'src/'
-    }),
-
-    copy({
-      from: ['utils/helper.ts'],
-      toDir: 'src/'
-    }),
-
-    copy({
-      from: ['utils/flipFunction.ts'],
-      toDir: 'src/'
     })
   )
 )

@@ -21,21 +21,19 @@ async function generateIconComponents ({ type, from }: IconGenerateScript) {
         data = data.replace('xml:space="preserve"', '')
         if (fileName === 'INSTALLING_ANIMATED') {
           while (data.includes('class="st0"')) {
-            data = data.replace('class="st0"', 'className="st0"')
+            data = data.replace('class="st0"', '')
           }
         }
       }
 
       // eslint-disable-next-line no-template-curly-in-string
-      const propString = 'svg data-testid="eos-svg-component" transform={`rotate(${rotate}) translate(${translateX}, ${translateY}) scale(${scaleX}, ${scaleY})`} fill={color} width={size} height={size}'
-      data = data.replace('svg', propString)
 
       const render = componentTemplate({ fileName, data })
       const indexContent = iconIndexTemplate({ fileName })
 
-      // creates a .tsx file at src/icon/ containing a react component
+      // creates a .vue file at src/lib-components/ containing a react component
       fs.writeFile(
-        path.resolve(__dirname, `../src/icon/${fileName}.tsx`),
+        path.resolve(__dirname, `../src/lib-components/${fileName}.vue`),
         render,
         {
           flag: 'w+'
@@ -46,9 +44,9 @@ async function generateIconComponents ({ type, from }: IconGenerateScript) {
           }
         })
 
-      // creates a .tsx index file at src/icon/ containing exports of all the icons
+      // creates a .ts index file at src/lib-components/ containing exports of all the icons
       fs.writeFile(
-        path.resolve(__dirname, '../src/icon/index.tsx'),
+        path.resolve(__dirname, '../src/lib-components/index.ts'),
         indexContent,
         {
           flag: 'a+'
