@@ -33,7 +33,7 @@ async function generateIconComponents ({ type, from }: IconGenerateScript) {
 
       // creates a .vue file at src/lib-components/ containing a react component
       fs.writeFile(
-        path.resolve(__dirname, `../src/lib-components/${fileName}.vue`),
+        path.resolve(__dirname, `../src/icons/${fileName}.tsx`),
         render,
         {
           flag: 'w+'
@@ -46,7 +46,7 @@ async function generateIconComponents ({ type, from }: IconGenerateScript) {
 
       // creates a .ts index file at src/lib-components/ containing exports of all the icons
       fs.writeFile(
-        path.resolve(__dirname, '../src/lib-components/index.ts'),
+        path.resolve(__dirname, '../src/icons/index.tsx'),
         indexContent,
         {
           flag: 'a+'

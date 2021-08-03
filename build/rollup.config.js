@@ -61,7 +61,7 @@ const baseConfig = {
       commonjs(),
     ],
     babel: {
-      exclude: 'node_modules/**',
+      exclude: ['node_modules/**','gulpfile.ts','interface/**','scripts/**','template/**','utils/**'],
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue'],
       babelHelpers: 'bundled',
     },

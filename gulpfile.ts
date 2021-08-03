@@ -5,7 +5,7 @@ import { copy } from './utils/copy'
 export default series(
 
   // Cleaning 'src','svg','es','lib' before copying SVGs from 'EOS-Icons'
-  clean(['dist', 'svg', 'src/lib-components']),
+  clean(['dist', 'svg', 'src/icons']),
 
   // Running all the tasks of copying SVGs from 'EOS-Icons' in parallel
   parallel(
