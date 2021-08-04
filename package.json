@@ -4,47 +4,32 @@
   "description": "",
   "main": "./lib/index.js",
   "module": "./es/index.js",
-  "files": [
-    "es",
-    "lib"
-  ],
   "sideEffects": false,
   "scripts": {
     "fetch": "TS_NODE_PROJECT=tsconfigGulp.json gulp --require ts-node/register/transpile-only",
     "script:filled": "TS_NODE_PROJECT=scripts/tsconfig.json node -r ts-node/register scripts/index.ts --target=filled",
     "script:outlined": "TS_NODE_PROJECT=scripts/tsconfig.json node -r ts-node/register scripts/index.ts --target=outlined",
     "script:animated": "TS_NODE_PROJECT=scripts/tsconfig.json node -r ts-node/register scripts/index.ts --target=animated",
-    "icon": "mkdir -p src/icons && npm run script:animated",
-    "generate": "npm run fetch && npm run icon",
-    "serve": "vue-cli-service serve dev/serve.ts",
-    "prebuild": "rimraf ./dist",
-    "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
-    "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
-    "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
-    "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife",
-    "postbuild": "rimraf ./dist/types/dev ./dist/types/src/entry.d.ts",
-    "compile": "vc-tools run compile"
+    "icon": "mkdir -p src/icons && npm run script:animated && npm run script:filled && npm run script:outlined",
+    "compile": "vc-tools run compile",
+    "generate": "npm run fetch && npm run icon && npm run compile"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-typescript": "^7.14.5",
-    "@rollup/plugin-alias": "^3.1.2",
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^14.0.0",
-    "@rollup/plugin-node-resolve": "^9.0.0",
-    "@rollup/plugin-replace": "^2.4.2",
+    "@babel/runtime": "^7.14.8",
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/github": "^7.2.3",
     "@semantic-release/npm": "^7.1.3",
     "@semantic-release/release-notes-generator": "^9.0.3",
     "@types/gulp": "^4.0.9",
+    "@vue/babel-plugin-jsx": "^1.0.6",
     "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/cli-plugin-typescript": "^4.5.13",
     "@vue/cli-service": "^4.5.13",
     "@vue/compiler-sfc": "^3.0.11",
-    "@zerollup/ts-transform-paths": "^1.7.18",
     "conventional-changelog-eslint": "^3.0.9",
     "cross-env": "^7.0.3",
     "del": "^4.1.1",
@@ -53,11 +38,6 @@
     "minimist": "^1.2.5",
     "postcss": "^8.2.10",
     "rimraf": "^3.0.2",
-    "rollup": "^2.52.8",
-    "rollup-plugin-postcss": "^4.0.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "rollup-plugin-vue": "^6.0.0",
     "semantic-release": "^17.4.4",
     "ts-node": "^10.1.0",
     "ttypescript": "^1.5.12",
@@ -95,9 +75,9 @@
     ]
   },
   "config": {
-    "port": 9528,
+    "port": 8010,
     "entry": {
-      "@ant-design/icons-vue": [
+      "vueicontestrepo": [
         "./src/index.jsx"
       ]
     }

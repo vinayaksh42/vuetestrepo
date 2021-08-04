@@ -9,6 +9,9 @@ import { nameFunction } from '../utils/nameFunction'
 async function generateIconComponents ({ type, from }: IconGenerateScript) {
   const iconNames = await fs.promises.readdir(from)
   for (const iconName of iconNames) {
+    if(iconName === 'addchart.svg') {
+      continue
+    }
     const fileName = nameFunction({ iconName, type })
 
     // fetching Data of the required SVG file
@@ -16,7 +19,9 @@ async function generateIconComponents ({ type, from }: IconGenerateScript) {
       if (err) {
         console.error(err)
       }
-
+      if(fileName === 'AddChartOulined' || fileName === 'AddChartFilled' || fileName === 'AddchartOulined' || fileName === 'AddchartFilled') {
+        console.log(fileName)
+      }
       if (type === 'animated') {
         data = data.replace('xml:space="preserve"', '')
         if (fileName === 'INSTALLING_ANIMATED') {
@@ -28,7 +33,7 @@ async function generateIconComponents ({ type, from }: IconGenerateScript) {
 
       // eslint-disable-next-line no-template-curly-in-string
 
-      const render = componentTemplate({ fileName, data })
+      var render = componentTemplate({ fileName, data })
       const indexContent = iconIndexTemplate({ fileName })
 
       // creates a .vue file at src/lib-components/ containing a react component
