@@ -35,7 +35,7 @@ async function generateIconComponents ({ type, from }: IconGenerateScript) {
       // eslint-disable-next-line no-template-curly-in-string
       const propString = 'svg v-bind:fill="color" v-bind:width="size" v-bind:height="size"'
       data = data.replace('svg', propString)
-
+      data = data.replace(/\n/g, ' ');
       var render = basicIconTemplate({ fileName, data })
       const indexContent = iconIndexTemplate({ fileName })
 
