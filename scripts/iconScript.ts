@@ -3,6 +3,7 @@ import * as fs from 'fs'
 
 import { IconGenerateScript } from '../interface/index'
 import componentTemplate from '../template/iconComponent'
+import basicIconTemplate from '../template/basicIconTemplate'
 import iconIndexTemplate from '../template/iconIndex'
 import { nameFunction } from '../utils/nameFunction'
 
@@ -32,13 +33,15 @@ async function generateIconComponents ({ type, from }: IconGenerateScript) {
       }
 
       // eslint-disable-next-line no-template-curly-in-string
+      const propString = 'svg v-bind:fill="color" v-bind:width="size" v-bind:height="size"'
+      data = data.replace('svg', propString)
 
-      var render = componentTemplate({ fileName, data })
+      var render = basicIconTemplate({ fileName, data })
       const indexContent = iconIndexTemplate({ fileName })
 
       // creates a .vue file at src/lib-components/ containing a react component
       fs.writeFile(
-        path.resolve(__dirname, `../src/icons/${fileName}.tsx`),
+        path.resolve(__dirname, `../src/icons/${fileName}.js`),
         render,
         {
           flag: 'w+'
@@ -51,7 +54,7 @@ async function generateIconComponents ({ type, from }: IconGenerateScript) {
 
       // creates a .ts index file at src/lib-components/ containing exports of all the icons
       fs.writeFile(
-        path.resolve(__dirname, '../src/icons/index.tsx'),
+        path.resolve(__dirname, '../src/icons/index.js'),
         indexContent,
         {
           flag: 'a+'
