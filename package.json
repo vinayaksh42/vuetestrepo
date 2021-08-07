@@ -2,8 +2,8 @@
   "name": "vueicontestrepo",
   "version": "1.0.6",
   "description": "",
-  "main": "./src/index.js",
-  "module": "./src/index.js",
+  "main": "./es/index.js",
+  "module": "./lib/index.js",
   "sideEffects": false,
   "scripts": {
     "fetch": "TS_NODE_PROJECT=tsconfigGulp.json gulp --require ts-node/register/transpile-only",
@@ -12,7 +12,7 @@
     "script:animated": "TS_NODE_PROJECT=scripts/tsconfig.json node -r ts-node/register scripts/index.ts --target=animated",
     "icon": "mkdir -p src/icons && npm run script:filled && npm run script:outlined",
     "compile": "vc-tools run compile",
-    "generate": "npm run fetch && npm run icon"
+    "generate": "npm run fetch && npm run icon && npm run compile"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",

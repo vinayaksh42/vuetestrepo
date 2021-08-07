@@ -33,15 +33,18 @@ async function generateIconComponents ({ type, from }: IconGenerateScript) {
       }
 
       // eslint-disable-next-line no-template-curly-in-string
-      const propString = 'svg v-bind:fill="color" v-bind:width="size" v-bind:height="size"'
+      // const propString = 'svg v-bind:fill="color" v-bind:width="size" v-bind:height="size"'
+      const propString = 'svg data-testid="eos-svg-component" transform={`rotate(${rotate}) translate(${translateX}, ${translateY}) scale(${scaleX}, ${scaleY})`} fill={color} width={size} height={size}'
+
       data = data.replace('svg', propString)
       data = data.replace(/\n/g, ' ');
-      var render = basicIconTemplate({ fileName, data })
+
+      var render = componentTemplate({ fileName, data })
       const indexContent = iconIndexTemplate({ fileName })
 
       // creates a .vue file at src/lib-components/ containing a react component
       fs.writeFile(
-        path.resolve(__dirname, `../src/icons/${fileName}.js`),
+        path.resolve(__dirname, `../src/icons/${fileName}.tsx`),
         render,
         {
           flag: 'w+'
@@ -54,7 +57,7 @@ async function generateIconComponents ({ type, from }: IconGenerateScript) {
 
       // creates a .ts index file at src/lib-components/ containing exports of all the icons
       fs.writeFile(
-        path.resolve(__dirname, '../src/icons/index.js'),
+        path.resolve(__dirname, '../src/icons/index.tsx'),
         indexContent,
         {
           flag: 'a+'
