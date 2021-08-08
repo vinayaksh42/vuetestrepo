@@ -9,12 +9,12 @@ export function flipFunction ({ horizontalFlip, verticalFlip }: FlipProps) {
 
   if (horizontalFlip) {
     scaleX = -1
-    translateX = 24
+    translateX = 0
   }
 
   if (verticalFlip) {
     scaleY = -1
-    translateY = 24
+    translateY = 0
   }
 
   return { scaleX, scaleY, translateX, translateY }
