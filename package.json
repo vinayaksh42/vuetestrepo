@@ -2,8 +2,8 @@
   "name": "vueicontestrepo",
   "version": "1.0.9",
   "description": "",
-  "main": "./es/index.js",
-  "module": "./lib/index.js",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
   "sideEffects": false,
   "scripts": {
     "fetch": "TS_NODE_PROJECT=tsconfigGulp.json gulp --require ts-node/register/transpile-only",
