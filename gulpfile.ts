@@ -28,21 +28,21 @@ export default series(
     copy({
       from: ['node_modules/eos-icons/svg-outlined/*.svg'],
       toDir: 'svg/outlined'
-    }),
-
-    copy({
-      from: ['node_modules/eos-icons/svg-outlined/material/*.svg'],
-      toDir: 'svg/outlined'
-    }),
-
-    copy({
-      from: ['utils/helper.ts'],
-      toDir: 'src/'
-    }),
-
-    copy({
-      from: ['utils/flipFunction.ts'],
-      toDir: 'src/'
     })
+
+    // copy({
+    //   from: ['node_modules/eos-icons/svg-outlined/material/*.svg'],
+    //   toDir: 'svg/outlined'
+    // }),
+
+    // copy({
+    //   from: ['utils/helper.ts'],
+    //   toDir: 'src/'
+    // }),
+
+    // copy({
+    //   from: ['utils/flipFunction.ts'],
+    //   toDir: 'src/'
+    // })
   )
 )

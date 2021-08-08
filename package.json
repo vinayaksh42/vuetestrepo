@@ -12,7 +12,7 @@
     "script:animated": "TS_NODE_PROJECT=scripts/tsconfig.json node -r ts-node/register scripts/index.ts --target=animated",
     "icon": "mkdir -p src/icons && npm run script:filled && npm run script:outlined && npm run script:animated",
     "compile": "vc-tools run compile",
-    "generate": "npm run fetch && npm run icon && npm run compile"
+    "generate": "npm run fetch && npm run icon"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
