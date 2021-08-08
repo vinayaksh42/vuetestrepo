@@ -38,10 +38,9 @@ async function generateIconComponents ({ type, from }: IconGenerateScript) {
 
       data = data.replace('svg', propString)
       data = data.replace(/\n/g, ' ');
-
+      
       var render = basicIconTemplate({ fileName, data })
       const indexContent = iconIndexTemplate({ fileName })
-
       // creates a .vue file at src/lib-components/ containing a react component
       fs.writeFile(
         path.resolve(__dirname, `../src/icons/${fileName}.js`),
